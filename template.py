@@ -1,24 +1,23 @@
 import os
-import pathlib 
-import Path
+from pathlib import Path
 import logging
 logging.basicConfig(level=logging.INFO,format='[%(asctime)s]: %(message)s:')
 
 list_of_files = [
-    "src\_init_.py",
-     "src\helper.py",
+    "src/init_.py",
+     "src/helper.py",
      ".env",
-     "requirements.txt"
+     "requirements.txt",
      "setup.py",
      "research\trails.ipynb",
      "test.py"
 ]
 for filepath in list_of_files:
     filepath= Path(filepath)
-    filedir, filename =os.path.split(filepath)
+    filedir, filename =os.path.split(str(filepath))
 
     if filedir !="":
-        os.makedirs(filedirs,exists_ok=True)
+        os.makedirs(filedir,exist_ok=True)
         logging.info(f"Creating directory;{filedir} for the file: {filename}")
     
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath)==0):
